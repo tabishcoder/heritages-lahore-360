@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lahore Heritage 360° · Explore, Learn & Play</title>
+  <meta name="description" content="Explore Badshahi Mosque, Lahore Fort, Hazuri Bagh, Allama Iqbal's Tomb and Minar-e-Pakistan in 360°, read their stories and test your knowledge.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="page">
+  <header class="hero hero--home">
+    <div class="hero__inner">
+      <span class="eyebrow">Explore · Learn · Play</span>
+      <h1>Lahore Heritage in 360°</h1>
+      <p>Step inside the Badshahi Mosque, the Lahore Fort, Hazuri Bagh, Allama Iqbal's Tomb and Minar-e-Pakistan.
+         Read their stories, test your memory, and collect a stamp for every site.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="tour.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          Start exploring
+        </a>
+        <button class="btn btn--ghost" type="button" id="show-around">Show me around</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap journey">
+    <div class="journey__card" id="journey"></div>
+  </div>
+
+  <section class="wrap home-section">
+    <h2 class="section-title">Choose your adventure</h2>
+    <p class="section-sub">Start anywhere. Everything you do earns XP and moves you up a level.</p>
+    <div class="paths">
+      <a class="path" href="tour.html">
+        <span class="path__icon">🌐</span>
+        <h3>Explore in 360°</h3>
+        <p>Walk through 58 places as if you were there. Drag to look around, tap arrows to move.</p>
+        <span class="path__reward">+5 XP for every new place</span>
+      </a>
+      <a class="path" href="learn.html">
+        <span class="path__icon">📖</span>
+        <h3>Read the stories</h3>
+        <p>Who built these monuments, when, and why. Short, friendly and full of surprises.</p>
+        <span class="path__reward">+30 XP per story</span>
+      </a>
+      <a class="path" href="quiz.html">
+        <span class="path__icon">❓</span>
+        <h3>Take a quiz</h3>
+        <p>Test what you know. Every answer explains the fact, so you learn as you play.</p>
+        <span class="path__reward">+10 XP per right answer</span>
+      </a>
+      <a class="path" href="memory.html">
+        <span class="path__icon">🧠</span>
+        <h3>Memory games</h3>
+        <p>Recognise places from a single photo, or match pictures to their names.</p>
+        <span class="path__reward">Earn badges for sharp eyes</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap home-section" style="padding-top:8px">
+    <h2 class="section-title">Five heritage sites</h2>
+    <p class="section-sub">Read a site's story and pass its quiz to earn its stamp in your Heritage Passport.</p>
+    <div class="sitecards" id="sitecards"></div>
+  </section>
+
+  <footer class="footer">
+    360° photography by <a href="https://hd360.pk" target="_blank" rel="noopener">HD360.pk</a>.
+    Viewer powered by <a href="https://pannellum.org" target="_blank" rel="noopener">Pannellum</a>.
+    Your progress is saved in this browser only.
+  </footer>
+
+  <script src="assets/js/tour-data.js"></script>
+  <script src="assets/js/heritage-data.js"></script>
+  <script src="assets/js/game.js"></script>
+  <script>
+    Game.mountNav('home');
+    document.getElementById('show-around').onclick = () => Game.startTour();
+
+    function nextStep() {
+      const stamps = Game.stamps();
+      const unread = stamps.find(s => !s.read);
+      if (!Object.keys(Game.state.visited).length) return { text: 'Take your first step inside a monument', href: 'tour.html', cta: 'Explore 360°' };
+      if (unread) return { text: `Read the story of ${unread.story.title}`, href: `learn.html#${unread.story.id}`, cta: 'Read story' };
+      const noQuiz = stamps.find(s => !s.quiz);
+      if (noQuiz) return { text: `Pass the ${noQuiz.story.title} quiz to earn its stamp`, href: `quiz.html#${noQuiz.story.id}`, cta: 'Take quiz' };
+      if (Game.state.memoryBest === null) return { text: 'Try Memory Match and test your eye', href: 'memory.html', cta: 'Play' };
+      const unseen = stamps.find(s => s.visited < s.total);
+      if (unseen) return { text: `Find the places you haven't seen at ${unseen.story.title}`, href: `tour.html#${unseen.story.scenes.find(id => !Game.state.visited[id])}`, cta: 'Explore' };
+      return { text: 'You have explored everything. Try for a perfect quiz score!', href: 'quiz.html', cta: 'Quiz' };
+    }
+
+    function render() {
+      const l = Game.level();
+      const n = nextStep();
+      const stamped = Game.stamps().filter(s => s.stamped).length;
+      const journey = document.getElementById('journey');
+      journey.innerHTML = `
+        <button class="journey__level link-reset" type="button" title="Open your passport">
+          <span class="passport__level">${l.icon}</span>
+          <span><small class="muted">Your journey</small><br><b>Level ${l.index} · ${l.name}</b>
+            <div class="xpbar"><i style="width:${Math.round(l.progress * 100)}%"></i></div>
+            <small class="muted">${Game.state.xp} XP · ${stamped}/5 stamps</small></span>
+        </button>
+        <div class="journey__next"><div><small>Suggested next</small>${n.text}</div><a class="btn btn--primary btn--sm" href="${n.href}">${n.cta}</a></div>`;
+      journey.querySelector('.journey__level').onclick = Game.openPassport;
+
+      document.getElementById('sitecards').innerHTML = Game.stamps().map(s => `
+        <article class="sitecard">
+          <div class="sitecard__img"><img src="${s.story.image}" alt="" loading="lazy">
+            <span class="sitecard__stamp ${s.stamped ? 'done' : ''}">${s.stamped ? '🏅 Stamped' : `${(s.read ? 1 : 0) + (s.quiz ? 1 : 0)}/2 to stamp`}</span></div>
+          <div class="sitecard__body">
+            <h3>${s.story.title}</h3>
+            <p>${s.story.tagline}</p>
+            <div class="sitecard__actions">
+              <a class="chip-btn chip-btn--accent" href="learn.html#${s.story.id}">📖 Story</a>
+              <a class="chip-btn" href="tour.html#${s.story.tourScene}">🌐 360° view</a>
+              <a class="chip-btn" href="quiz.html#${s.story.id}">❓ Quiz</a>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+    render();
+    Game.onChange(render);
+    Game.maybeOnboard();
+  </script>
+</body>
+</html>

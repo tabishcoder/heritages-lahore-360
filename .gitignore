@@ -1,0 +1,15 @@
+# Photos are not included in this repository (see README > Images).
+360-panoramas/
+assets/thumbs/
+assets/stories/
+preview.jpg
+
+# Source material and build tools, not used by the website itself.
+images/
+media/
+lahore heritage images/
+tools/
+
+# Local screenshot test pages
+_t_*.html
+_h_*.html
