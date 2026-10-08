@@ -23,7 +23,7 @@ img { display: block; max-width: 100%; }
 .hero {
   position: relative; min-height: 100svh; display: flex; align-items: flex-end;
   padding: 0 clamp(16px, 6vw, 96px) clamp(48px, 10vh, 120px);
-  background: url("../../preview.jpg") center / cover no-repeat;
+  background: var(--hero-image) center / cover no-repeat;
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;

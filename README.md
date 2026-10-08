@@ -44,14 +44,15 @@ Then open http://localhost:8000. VS Code's "Live Server" extension works too.
 
 ## Images
 
-Photos are **not included** in this repository. To run the site, add these files:
+360° photography by [HD360.pk](https://hd360.pk), used with permission. The photos are not covered
+by any open licence: do not reuse them outside this project without HD360's permission.
 
-| Path | What |
-| --- | --- |
-| `360-panoramas/<file>` | One equirectangular 360° JPG per scene (2:1, e.g. 7680×3840). File names are listed as `file` in `assets/js/tour-data.js` |
-| `assets/thumbs/<sceneId>.jpg` | 640×400 card thumbnail per scene |
-| `assets/stories/<storyId>.jpg` | 1600×800 header image per story (`badshahi`, `fort`, `hazuri`, `iqbal`, `minar`) |
-| `preview.jpg` | Home page background |
+Photos are **not stored in this repository**. They are hosted on [Cloudinary](https://cloudinary.com),
+and `assets/js/images.js` decides where they load from:
 
-Use only photos you own or have a licence for, e.g. your own 360° camera shots or
-Creative Commons panoramas from Wikimedia Commons (credit the author as the licence requires).
+- `cloudName: 'dppgxpdue'` (current) loads them from Cloudinary, under the folder `lahore-heritage/`
+  with the same paths, e.g. `lahore-heritage/360-panoramas/node1_Badshahi_Mosque.jpg`.
+- `cloudName: ''` loads local files next to the pages (`360-panoramas/`, `assets/thumbs/`,
+  `assets/stories/`, `preview.jpg`), handy for offline development.
+
+Panoramas on Cloudinary are 6144×3072, because the free plan limits images to 25 megapixels and 10 MB.

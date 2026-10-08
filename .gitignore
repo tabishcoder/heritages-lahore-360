@@ -1,8 +1,9 @@
-# Photos are not included in this repository (see README > Images).
+# Images are hosted on Cloudinary, not in git (see README > Images).
 360-panoramas/
 assets/thumbs/
 assets/stories/
 preview.jpg
+cloudinary-upload/
 
 # Source material and build tools, not used by the website itself.
 images/
