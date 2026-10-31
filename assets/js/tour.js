@@ -23,6 +23,25 @@
           cssClass: 'nav-spot', createTooltipFunc: hotspotTooltip, createTooltipArgs: scenes[l.to].title,
         })),
     };
+    if (s.flat) Object.assign(pannellumScenes[id], flatView(s.flat));
+  }
+
+  // Settings for an aerial photo stored as a partial panorama (see aerial-views.js):
+  // keep the view inside the photo and never zoom out past its edges.
+  function flatView(f) {
+    const pano = document.getElementById('pano');
+    const aspect = (pano.clientWidth || innerWidth) / (pano.clientHeight || innerHeight);
+    const rad = Math.PI / 180;
+    // widest view whose height still fits inside the photo on this screen
+    const fit = 2 * Math.atan(Math.tan(f.vaov / 2 * rad) * aspect) / rad;
+    const maxHfov = Math.min(f.haov, fit) * 0.98;
+    return {
+      haov: f.haov, vaov: f.vaov, vOffset: 0,
+      minYaw: -f.haov / 2, maxYaw: f.haov / 2, minPitch: -f.vaov / 2, maxPitch: f.vaov / 2,
+      hfov: Math.min(f.hfov, maxHfov), maxHfov, minHfov: 8,
+      avoidShowingBackground: true, autoRotate: false, // a flat photo has no back side to rotate to
+      author: f.credit, authorURL: f.creditUrl,
+    };
   }
 
   const fromHash = () => (scenes[location.hash.slice(1)] ? location.hash.slice(1) : null);

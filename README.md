@@ -56,3 +56,19 @@ and `assets/js/images.js` decides where they load from:
   `assets/stories/`, `preview.jpg`), handy for offline development.
 
 Panoramas on Cloudinary are 6144×3072, because the free plan limits images to 25 megapixels and 10 MB.
+
+### Aerial views
+
+Six of the aerial views (Badshahi Mosque, Minar-e-Pakistan, Allama Iqbal Park, Hazuri Bagh,
+Deewan-e-Aam, Deewan-e-Khas) use two open-licence aerial photos instead of 360° panoramas. They are
+stored in this repository under `assets/aerial/` and set up in `assets/js/aerial-views.js`: each
+photo is saved as a partial panorama, so Pannellum shows it with true perspective, and several views
+open the same photo on a different spot. The viewer shows the credit in its info box.
+
+| File | Source | Licence |
+| --- | --- | --- |
+| `assets/aerial/badshahi-minar.jpg` | [Badshahi Mosque with Minar e Pakistan in the background](https://commons.wikimedia.org/wiki/File:Badshahi_Mosque_with_Minar_e_Pakistan_in_the_background._Lahore.jpg) by Idaudpota | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `assets/aerial/hazuri-fort.jpg` | [Badshahi and Lahore in the Evening](https://commons.wikimedia.org/wiki/File:Badshahi_and_Lahore_in_the_Evening._Aerial_View.jpg) combined with [Mughal Art in an Ocean of Concrete](https://commons.wikimedia.org/wiki/File:Badshahi_Mosqu_-_Mughal_Art_in_an_Ocean_of_Concrete.jpg), both by Idaudpota | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+
+The photos were colour-corrected, cleaned up and (for `hazuri-fort.jpg`) stitched together; the
+edited versions are shared under the same CC BY-SA 4.0 licence.

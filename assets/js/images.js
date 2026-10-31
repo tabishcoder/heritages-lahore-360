@@ -13,6 +13,7 @@ window.IMAGES = { cloudName: 'dppgxpdue', folder: 'lahore-heritage' };
 
   if (window.TOUR) {
     for (const s of Object.values(TOUR.scenes)) {
+      if (s.local) continue; // e.g. the aerial views from aerial-views.js live in this repo
       s.file = url(s.file); // panoramas are pre-sized for Cloudinary; served as uploaded
       s.thumb = url(s.thumb, 'f_auto,q_auto');
     }
