@@ -44,6 +44,8 @@ Then open http://localhost:8000. VS Code's "Live Server" extension works too.
 
 ## Images
 
+Full list of image sources and licences: [`credits/`](credits/README.md).
+
 360° photography by [HD360.pk](https://hd360.pk), used with permission. The photos are not covered
 by any open licence: do not reuse them outside this project without HD360's permission.
 
