@@ -1,12 +1,12 @@
 // Aerial views built from open-licence aerial photos (Wikimedia Commons), replacing the 360° aerial
-// panoramas. Each photo is stored as a partial panorama (assets/aerial/*.jpg) so Pannellum shows it
+// panoramas. Each photo is stored as a partial panorama (assets/aerial/*.webp) so Pannellum shows it
 // with true perspective; several aerial views share one photo and open on a different spot.
 // Load this right after tour-data.js and before images.js.
 (function () {
   const PHOTOS = {
     // haov / vaov: how many degrees of the view the photo covers (horizontal / vertical)
     'badshahi-minar': {
-      file: 'assets/aerial/badshahi-minar.jpg', haov: 60, vaov: 49.8,
+      file: 'assets/aerial/badshahi-minar.webp', haov: 60, vaov: 49.8,
       credit: 'Photo: Idaudpota, Wikimedia Commons, CC BY-SA 4.0',
       creditUrl: 'https://commons.wikimedia.org/wiki/File:Badshahi_Mosque_with_Minar_e_Pakistan_in_the_background._Lahore.jpg',
       links: [
@@ -18,7 +18,7 @@
       ],
     },
     'hazuri-fort': {
-      file: 'assets/aerial/hazuri-fort.jpg', haov: 50, vaov: 60.13,
+      file: 'assets/aerial/hazuri-fort.webp', haov: 50, vaov: 60.13,
       credit: 'Photos: Idaudpota, Wikimedia Commons, CC BY-SA 4.0',
       creditUrl: 'https://commons.wikimedia.org/wiki/File:Badshahi_and_Lahore_in_the_Evening._Aerial_View.jpg',
       links: [
@@ -34,12 +34,12 @@
 
   // Which photo each aerial scene uses, and where it opens
   const VIEWS = {
-    node64: { photo: 'badshahi-minar', yaw: 2, pitch: -5, hfov: 50, thumb: 'badshahi.jpg' },
-    node63: { photo: 'badshahi-minar', yaw: -10.9, pitch: 13, hfov: 35, thumb: 'minar.jpg' },
-    node61: { photo: 'badshahi-minar', yaw: 12, pitch: 10, hfov: 45, thumb: 'iqbal-park.jpg' },
-    node57: { photo: 'hazuri-fort', yaw: 2.3, pitch: -3.5, hfov: 30, thumb: 'hazuri-bagh.jpg' },
-    node65: { photo: 'hazuri-fort', yaw: 5.1, pitch: 5, hfov: 28, thumb: 'deewan-e-aam.jpg' },
-    node60: { photo: 'hazuri-fort', yaw: 0.6, pitch: 4.7, hfov: 25, thumb: 'deewan-e-khas.jpg' },
+    node64: { photo: 'badshahi-minar', yaw: 2, pitch: -5, hfov: 50, thumb: 'badshahi.webp' },
+    node63: { photo: 'badshahi-minar', yaw: -10.9, pitch: 13, hfov: 35, thumb: 'minar.webp' },
+    node61: { photo: 'badshahi-minar', yaw: 12, pitch: 10, hfov: 45, thumb: 'iqbal-park.webp' },
+    node57: { photo: 'hazuri-fort', yaw: 2.3, pitch: -3.5, hfov: 30, thumb: 'hazuri-bagh.webp' },
+    node65: { photo: 'hazuri-fort', yaw: 5.1, pitch: 5, hfov: 28, thumb: 'deewan-e-aam.webp' },
+    node60: { photo: 'hazuri-fort', yaw: 0.6, pitch: 4.7, hfov: 25, thumb: 'deewan-e-khas.webp' },
   };
 
   for (const [id, v] of Object.entries(VIEWS)) {
