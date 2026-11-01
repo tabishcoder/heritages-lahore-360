@@ -31,6 +31,11 @@ same CC BY-SA 4.0 licence.
   cut out, scaled to the original's height and placed on top.
 - **hazuri-fort.webp**: the second photo was aligned onto the first and blended in, then the same
   colour, noise and sharpening clean-up.
+- **Daylight look (both)**: the original photos were taken at sunset. They were regraded to a
+  clear daytime look: neutral white balance, brighter exposure with lifted shadows, pink sunset
+  tones on the stone turned back to sandstone, livelier greens.
+- **Sky and sun (hazuri-fort.webp)**: the hazy evening sky was replaced with a computer-generated
+  blue sky with a few clouds and the sun. It is not from a photo.
 - Both are stored as partial panoramas so the 360° viewer shows them with correct perspective.
 
 ## How to credit them
