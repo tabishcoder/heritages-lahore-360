@@ -37,10 +37,13 @@ Then open http://localhost:8000. VS Code's "Live Server" extension works too.
 | `assets/js/quiz-data.js` | Quiz questions with explanations |
 | `assets/js/game.js` | XP, levels, badges, passport, toasts, navigation and the guided tour |
 | `assets/js/tour.js` | Builds the Pannellum multi-scene tour, location drawer and controls |
+| `assets/js/aerial-views.js` | Aerial views from open-licence photos: which photo, where each view opens, hotspots |
+| `assets/js/map.js` | Home page satellite map: one pin per site, "Fly in" zooms down and opens its aerial view |
 | `assets/js/learn.js`, `quiz.js`, `memory.js` | Page logic for each section |
 | `assets/js/tour-data.js` | Generated scene list: titles, groups, start views and navigation hotspots |
 | `assets/css/style.css`, `site.css` | Styles (`site.css` holds the learning and game sections) |
 | `assets/vendor/pannellum/` | Pannellum 2.5.6 |
+| `assets/vendor/leaflet/` | Leaflet 1.9.4 (map) |
 
 ## Images
 
@@ -62,14 +65,15 @@ Panoramas on Cloudinary are 6144×3072, because the free plan limits images to 2
 ### Aerial views
 
 Six of the aerial views (Badshahi Mosque, Minar-e-Pakistan, Allama Iqbal Park, Hazuri Bagh,
-Deewan-e-Aam, Deewan-e-Khas) use two open-licence aerial photos instead of 360° panoramas. They are
+Deewan-e-Aam, Deewan-e-Khas) use three open-licence aerial photos instead of 360° panoramas. They are
 stored in this repository under `assets/aerial/` and set up in `assets/js/aerial-views.js`: each
 photo is saved as a partial panorama, so Pannellum shows it with true perspective, and several views
 open the same photo on a different spot. The viewer shows the credit in its info box.
 
 | File | Source | Licence |
 | --- | --- | --- |
-| `assets/aerial/badshahi-minar.webp` | [Badshahi Mosque with Minar e Pakistan in the background](https://commons.wikimedia.org/wiki/File:Badshahi_Mosque_with_Minar_e_Pakistan_in_the_background._Lahore.jpg) with Minar-e-Pakistan from [Aerial view of Minar e Pakistan](https://commons.wikimedia.org/wiki/File:Aerial_view_of_Minar_e_Pakistan.jpg), both by Idaudpota | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `assets/aerial/badshahi-east.webp` | [Aerial View of Badhshahi Mosque](https://commons.wikimedia.org/wiki/File:Aerial_View_of_Badhshahi_Mosque.jpg) by Mhtoori | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `assets/aerial/minar-park.webp` | [Minar e Pakistan, Lahore. Aerial view](https://commons.wikimedia.org/wiki/File:Minar_e_Pakistan,_Lahore._Aerial_view.jpg) by Idaudpota | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | `assets/aerial/hazuri-fort.webp` | [Badshahi and Lahore in the Evening](https://commons.wikimedia.org/wiki/File:Badshahi_and_Lahore_in_the_Evening._Aerial_View.jpg) combined with [Mughal Art in an Ocean of Concrete](https://commons.wikimedia.org/wiki/File:Badshahi_Mosqu_-_Mughal_Art_in_an_Ocean_of_Concrete.jpg), both by Idaudpota | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 
 The photos were colour-corrected, cleaned up and (for `hazuri-fort.webp`) stitched together; the

@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -31,6 +32,17 @@
   <div class="wrap journey">
     <div class="journey__card" id="journey"></div>
   </div>
+
+  <section class="wrap home-section home-map">
+    <div class="home-map__head">
+      <div>
+        <h2 class="section-title">Lahore from above</h2>
+        <p class="section-sub">Pick a site on the map and fly in: first the aerial view, then tap the arrows to step inside.</p>
+      </div>
+      <button class="chip-btn" type="button" id="map-reset">Show all sites</button>
+    </div>
+    <div class="map" id="heritage-map" aria-label="Map of the heritage sites"></div>
+  </section>
 
   <section class="wrap home-section">
     <h2 class="section-title">Choose your adventure</h2>
@@ -71,7 +83,8 @@
 
   <footer class="footer">
     360° photography by <a href="https://hd360.pk" target="_blank" rel="noopener">HD360.pk</a>.
-    Viewer powered by <a href="https://pannellum.org" target="_blank" rel="noopener">Pannellum</a>.
+    Viewer powered by <a href="https://pannellum.org" target="_blank" rel="noopener">Pannellum</a>, map by <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>.
+    Aerial photos: <a href="credits/README.md">credits</a>.
     Your progress is saved in this browser only.
   </footer>
 
@@ -80,6 +93,8 @@
   <script src="assets/js/heritage-data.js"></script>
   <script src="assets/js/images.js"></script>
   <script src="assets/js/game.js"></script>
+  <script src="assets/vendor/leaflet/leaflet.js"></script>
+  <script src="assets/js/map.js"></script>
   <script>
     Game.mountNav('home');
     document.getElementById('show-around').onclick = () => Game.startTour();
