@@ -5,16 +5,27 @@
 (function () {
   const PHOTOS = {
     // haov / vaov: how many degrees of the view the photo covers (horizontal / vertical)
-    'badshahi-minar': {
-      file: 'assets/aerial/badshahi-minar.webp', haov: 60, vaov: 49.8,
-      credit: 'Photo: Idaudpota, Wikimedia Commons, CC BY-SA 4.0',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Badshahi_Mosque_with_Minar_e_Pakistan_in_the_background._Lahore.jpg',
+    'badshahi-east': {
+      file: 'assets/aerial/badshahi-east.webp', haov: 72, vaov: 51.69,
+      credit: 'Photo: Mhtoori, Wikimedia Commons, CC BY-SA 4.0',
+      creditUrl: 'https://commons.wikimedia.org/wiki/File:Aerial_View_of_Badhshahi_Mosque.jpg',
       links: [
-        { to: 'node28', yaw: -10.89, pitch: 14.54 },  // Minar-e-Pakistan
-        { to: 'node2', yaw: -11.95, pitch: -1.81 },   // Badshahi Mosque prayer hall
-        { to: 'node1', yaw: 7.24, pitch: -8.13 },     // Badshahi Mosque courtyard
-        { to: 'node30', yaw: 19.7, pitch: -6.7 },     // Entrance gate
-        { to: 'node57', yaw: 28.32, pitch: -5.3 },    // towards Hazuri Bagh (east)
+        { to: 'node2', yaw: 0.66, pitch: 0 },         // prayer hall
+        { to: 'node31', yaw: 0.87, pitch: -6.9 },     // ablution pool
+        { to: 'node1', yaw: 12.38, pitch: -5.91 },    // courtyard
+        { to: 'node30', yaw: 0.87, pitch: -15.64 },   // entrance gate
+        { to: 'node3', yaw: -14.51, pitch: -18.07 },  // Allama Iqbal's tomb, beside the steps
+        { to: 'node57', yaw: 16.44, pitch: -18.46 },  // Hazuri Bagh aerial (in front of the gate)
+        { to: 'node63', yaw: 32.45, pitch: 1.46 },    // towards Minar-e-Pakistan (north)
+      ],
+    },
+    'minar-park': {
+      file: 'assets/aerial/minar-park.webp', haov: 55, vaov: 54.25,
+      credit: 'Photo: Idaudpota, Wikimedia Commons, CC BY-SA 4.0',
+      creditUrl: 'https://commons.wikimedia.org/wiki/File:Minar_e_Pakistan,_Lahore._Aerial_view.jpg',
+      links: [
+        { to: 'node28', yaw: -4.62, pitch: 8.67 },    // Minar-e-Pakistan
+        { to: 'node64', yaw: 0, pitch: -23.01 },      // towards Badshahi Mosque (south)
       ],
     },
     'hazuri-fort': {
@@ -34,9 +45,9 @@
 
   // Which photo each aerial scene uses, and where it opens
   const VIEWS = {
-    node64: { photo: 'badshahi-minar', yaw: 2, pitch: -5, hfov: 50, thumb: 'badshahi.webp' },
-    node63: { photo: 'badshahi-minar', yaw: -10.9, pitch: 13, hfov: 35, thumb: 'minar.webp' },
-    node61: { photo: 'badshahi-minar', yaw: 12, pitch: 10, hfov: 45, thumb: 'iqbal-park.webp' },
+    node64: { photo: 'badshahi-east', yaw: 0, pitch: 0, hfov: 62, thumb: 'badshahi.webp' },
+    node63: { photo: 'minar-park', yaw: -4.6, pitch: 7, hfov: 30, thumb: 'minar.webp' },
+    node61: { photo: 'minar-park', yaw: 0, pitch: 0, hfov: 52, thumb: 'iqbal-park.webp' },
     node57: { photo: 'hazuri-fort', yaw: 2.3, pitch: -3.5, hfov: 30, thumb: 'hazuri-bagh.webp' },
     node65: { photo: 'hazuri-fort', yaw: 5.1, pitch: 5, hfov: 28, thumb: 'deewan-e-aam.webp' },
     node60: { photo: 'hazuri-fort', yaw: 0.6, pitch: 4.7, hfov: 25, thumb: 'deewan-e-khas.webp' },
